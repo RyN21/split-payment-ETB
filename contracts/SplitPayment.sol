@@ -20,7 +20,7 @@ contract SplitPayment {
     }
 
   modifier onlyOwner() {
-    require(msg.sender == owner, 'only owner can send transaction');
+    require(msg.sender == owner, 'only owner can send transaction.');
     // if require is true then '_;' will be replaced with the code from the send function.
     _;
   }
