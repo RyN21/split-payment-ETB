@@ -11,10 +11,15 @@ contract SplitPayment {
     payable
     public
     {
-      require(msg.sender == owner, 'only owner can send transaction')
       require(to.length == amount.length, 'to and amount array must have same length.');
       for(uint i = 0; i < to.length; i++) {
         to[i].transfer(amount[i]);
       }
     }
+
+  modifier onlyOwner() {
+    require(msg.sender == owner, 'only owner can send transaction');
+    // if require is true then '_;' will be replaced with the code from the send function.
+    _;
+  }
 }
