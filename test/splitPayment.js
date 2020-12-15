@@ -35,6 +35,14 @@ contract('SplitPayment', (accounts) => {
   });
 
   it('Should NOT split payment if caller is not owner', async () => {
-    
+    const recipients = [accounts[1], accounts[2], accounts[3]];
+    const amounts = [40, 20, 30];
+    try {
+      await splitPayment.send(recipients, amounts, {from: accounts[6], value: 90});
+    } catch (error) {
+      assert(error.message.includes('only owner can send transaction.'));
+      return;
+    }
+    assert(false);
   });
 });
