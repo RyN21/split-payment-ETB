@@ -1,6 +1,12 @@
 pragma solidity ^0.5.0;
 
 contract SplitPayment {
+  address public owner;
+
+  constructor(address _owner) public {
+    owner = _owner;
+  }
+  
   function send(address payable[] memory to, uint[] memory amount)
     payable
     public
