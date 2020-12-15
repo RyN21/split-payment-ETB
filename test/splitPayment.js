@@ -23,6 +23,14 @@ contract('SplitPayment', (accounts) => {
   });
 
   it('Should NOT split payment if array length does not match', async () => {
-  
+    const recipients = [accounts[1], accounts[2], accounts[3]];
+    const amounts = [40, 20];
+    try {
+      await splitPayment.send(recipients, amounts, {from: accounts[0], value: 90});
+    } catch (error) {
+      assert(error.message.includes('to and amount array must have same length.'));
+      return;
+    }
+    assert(false);
   });
 });
