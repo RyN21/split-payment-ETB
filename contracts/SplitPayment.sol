@@ -9,8 +9,10 @@ contract SplitPayment {
 
   function send(address payable[] memory to, uint[] memory amount)
     payable
+    onlyOwner()
     public
     {
+      // This require function eliminates an if statement with a revert
       require(to.length == amount.length, 'to and amount array must have same length.');
       for(uint i = 0; i < to.length; i++) {
         to[i].transfer(amount[i]);
