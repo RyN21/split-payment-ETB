@@ -33,4 +33,8 @@ contract('SplitPayment', (accounts) => {
     }
     assert(false);
   });
+
+  it('Should NOT split payment if caller is not owner', async () => {
+    
+  });
 });
