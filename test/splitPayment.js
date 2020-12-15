@@ -21,4 +21,8 @@ contract('SplitPayment', (accounts) => {
       assert(finalBalance.sub(initialBalance).toNumber() === amounts[i]);
     });
   });
+
+  it('Should NOT split payment if array length does not match', async () => {
+  
+  });
 });
